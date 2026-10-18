@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gather</title>
+<meta name="description" content="Gather by RogerUp Labs: everyone's flights for your wedding, reunion or trip, in one place. Coming soon.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #fbf8f2; --ink: #0B1F3A; --muted: #4f5f75; --line: #e7e0d2;
+    --accent: #b86e00; --btn: #0B1F3A; --btn-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0B1F3A; --ink: #eef3fa; --muted: #9fb3cc; --line: #23406a;
+            --accent: #F5A524; --btn: #F5A524; --btn-ink: #0B1F3A; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 16px 40px; text-align: center; }
+  .icon { width: 120px; height: 120px; display: block; margin: 0 auto; border-radius: 24px; box-shadow: 0 0 0 1px var(--line); }
+  .by { margin: -8px 0 24px; color: var(--muted); font-size: 15px; letter-spacing: .04em; }
+  h1 { font-size: clamp(40px, 11vw, 64px); line-height: 1; margin: 24px 0 12px; }
+  .tag { font-size: clamp(19px, 4.6vw, 23px); margin: 0 auto 12px; max-width: 30ch; }
+  .soon { color: var(--accent); font-weight: 600; margin: 0 0 36px; }
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 12px; background: var(--btn);
+         color: var(--btn-ink); font-weight: 600; text-decoration: none; }
+  .note { color: var(--muted); font-size: 15px; margin: 14px 0 0; }
+  .note a { color: inherit; }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icon.svg" alt="Gather icon">
+  <h1>Gather</h1>
+  <p class="by">by RogerUp Labs</p>
+  <p class="tag">Everyone's flights for your wedding, reunion or trip, in one place.</p>
+  <p class="soon">Coming soon</p>
+
+  <a class="btn" href="mailto:hello@rogeruplabs.com?subject=Tell%20me%20when%20Gather%20launches">Email me when it launches</a>
+  <p class="note">Opens your email app. Or write to <a href="mailto:hello@rogeruplabs.com">hello@rogeruplabs.com</a>.</p>
+
+  <footer>
+    A <a href="https://rogeruplabs.com">RogerUp Labs</a> project
+    &nbsp;·&nbsp;
+    <a href="https://x.com/RogerUpLabs">@RogerUpLabs</a>
+  </footer>
+</main>
+</body>
+</html>
