@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · GatherFlights</title>
+<meta name="description" content="What the GatherFlights website collects, in plain language. Short version: almost nothing.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/archivo.woff2") format("woff2");
+               font-weight: 100 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2");
+               font-weight: 100 800; font-style: normal; font-display: swap; }
+
+  :root {
+    --bg: #F1F4F3; --surface: #FFFFFF; --ink: #0E2A2F; --muted: #557074; --line: #D7E0DF;
+    --brand: #0E3B43; --accent: #F0533C;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0A2328; --surface: #0E3B43; --ink: #E8F1EF; --muted: #9DBDBA; --line: #1D525B; --brand: #CFE5E2; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 18px/1.6 "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--brand); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
+           letter-spacing: -0.01em; color: var(--brand); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; }
+  main { padding: 32px 0 56px; }
+  .eyebrow { font: 600 13px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em;
+             text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1 { font-size: clamp(34px, 6vw, 48px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800;
+       color: var(--brand); margin: 0 0 16px; }
+  .updated { font: 13px/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--muted); margin: 0 0 32px; }
+  .summary { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; margin: 0 0 40px; }
+  .summary p { margin: 0; }
+  h2 { font-size: 23px; color: var(--brand); letter-spacing: -0.01em; margin: 36px 0 8px; }
+  p, li { color: var(--ink); }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; padding: 26px 0 40px; }
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="./"><img src="icon.svg" alt="" width="30" height="30">GatherFlights</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Privacy</p>
+  <h1>What this website knows about you</h1>
+  <p class="updated">Last updated 23 October 2026</p>
+
+  <div class="summary">
+    <p><b>Short version:</b> almost nothing. This site has no cookies, no analytics and no trackers. If you email us, we use your address to reply and to tell you when GatherFlights launches, and nothing else.</p>
+  </div>
+
+  <h2>Who we are</h2>
+  <p>GatherFlights is a project of RogerUp Labs. You can reach us at <a href="mailto:hello@rogeruplabs.com">hello@rogeruplabs.com</a>.</p>
+
+  <h2>This website</h2>
+  <ul>
+    <li>We don't use cookies.</li>
+    <li>We don't use analytics, ads, tracking pixels or social media widgets.</li>
+    <li>Everything on the page, including the fonts, loads from this site. Your browser doesn't contact any other company to show it.</li>
+  </ul>
+
+  <h2>Hosting</h2>
+  <p>The site is hosted on GitHub Pages. Like most web hosts, GitHub records technical details of each visit, such as your IP address, to keep the service running and secure. We can't see those records. GitHub explains what it keeps in its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacy statement</a>.</p>
+
+  <h2>If you email us</h2>
+  <p>When you email us, including with the "Email me when it launches" button, we receive your email address and whatever you write.</p>
+  <ul>
+    <li>We use it only to reply to you and to send you one email when GatherFlights launches.</li>
+    <li>We never sell it or share it with anyone else.</li>
+    <li>Once the launch email has gone out, we delete the launch list.</li>
+    <li>Want it gone sooner? Email <a href="mailto:hello@rogeruplabs.com">hello@rogeruplabs.com</a> and we'll delete it.</li>
+  </ul>
+
+  <h2>The GatherFlights app</h2>
+  <p>The app isn't available yet. When it is, it will have its own privacy policy covering trips, flights and accounts, written with the same idea: keep as little as possible and delete trip data when the trip is over.</p>
+
+  <h2>Changes</h2>
+  <p>If this page changes, we'll update the date at the top.</p>
+</main>
+
+<footer>
+  <div class="wrap">A <a href="https://rogeruplabs.com">RogerUp Labs</a> project &nbsp;·&nbsp; <a href="./">Home</a></div>
+</footer>
+</body>
+</html>
