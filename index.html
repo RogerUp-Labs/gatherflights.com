@@ -19,6 +19,7 @@
     --board: #0E3B43; --board-ink: #E8F1EF; --board-dim: #8FB3B0; --board-line: #1D525B;
     --good: #5FD3A2; --warn: #F5B35C;
     --mark: #0E3B43; --mark-bg: #F1F4F3;
+    --band: #0E3B43;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -26,6 +27,7 @@
       --brand: #CFE5E2; --accent: #F0533C; --accent-ink: #FFFFFF;
       --board: #061A1E; --board-line: #173F46;
       --mark: #CFE5E2; --mark-bg: #0A2328;
+      --band: #0C333A;
     }
   }
 
@@ -38,16 +40,20 @@
   .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
 
   /* top bar */
-  .top { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .top { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
            letter-spacing: -0.01em; color: var(--brand); text-decoration: none; }
   .brand img { width: 30px; height: 30px; }
   .pill { font: 600 12px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase;
           color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
 
+  /* top band: deep teal like the app icon, logo in light ink */
+  .band { --brand: #FFFFFF; --muted: #A9C7C4; --line: #2A6670; --mark: #FFFFFF; --mark-bg: var(--band);
+          background: var(--band);
+          color: var(--brand); }
   /* hero */
   .hero { display: grid; grid-template-columns: 1fr; gap: 8px; align-items: center;
-          padding: 24px 0 56px; text-align: center; }
+          padding-block: 24px 72px; text-align: center; }
   .mark-box { width: min(380px, 78vw); margin: 0 auto; position: relative; }
   .mark { display: block; width: 100%; height: auto; }
   .mark-static { display: none; }
@@ -156,12 +162,12 @@
 </style>
 </head>
 <body>
+<div class="band">
 <header class="wrap top">
-  <a class="brand" href="./"><img src="icon.svg" alt="" width="30" height="30">GatherFlights</a>
+  <a class="brand" href="./"><img src="logo-white.svg" alt="" width="30" height="30">GatherFlights</a>
   <span class="pill">Coming soon</span>
 </header>
 
-<main>
   <div class="wrap hero">
     <div class="mark-box">
       <svg class="mark mark-anim" viewBox="-60 -60 120 120" role="img" aria-labelledby="mark-t">
@@ -205,6 +211,9 @@
       <span class="cta-note mono">Pay per trip &middot; No subscription</span>
     </div>
   </div>
+</div>
+
+<main>
 
   <section>
     <div class="wrap split">
