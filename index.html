@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GatherFlights: everyone's flights, one arrivals board</title>
-<meta name="description" content="GatherFlights by RogerUp Labs. Share one invite link and watch your whole group's flights land on a live arrivals board. Private by design. Coming soon.">
+<meta name="description" content="GatherFlights by RogerUp Labs. Share one invite link and watch your whole group's flights land on a live arrivals board. Pay per trip, no subscription. Private by design. Coming soon.">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -69,7 +69,7 @@
   h1 { font-size: clamp(38px, 7.4vw, 68px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 800;
        color: var(--brand); margin: 0 auto 18px; max-width: 14ch; }
   .lede { font-size: clamp(18px, 2.4vw, 21px); color: var(--muted); max-width: 36ch; margin: 0 auto 30px; }
-  .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+  .cta { display: flex; flex-direction: column; gap: 14px; align-items: center; }
   .btn { display: inline-block; padding: 15px 24px; border-radius: 10px; background: var(--accent);
          color: var(--accent-ink); font-weight: 700; text-decoration: none; }
   .btn:hover { filter: brightness(1.06); }
@@ -124,6 +124,18 @@
   ul.checks li::before { content: ""; width: 14px; height: 14px; margin-top: 6px; border-radius: 50%;
                          border: 2.5px solid var(--brand); box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 8px var(--accent); }
   ul.checks b { color: var(--brand); }
+  .pass { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; display: grid;
+          grid-template-columns: 1fr; overflow: hidden; }
+  .pass-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 18px 24px;
+               background: var(--brand); color: var(--bg); font: 700 13px/1 "JetBrains Mono", ui-monospace, monospace;
+               letter-spacing: .16em; text-transform: uppercase; }
+  .pass-head span:last-child { color: var(--accent); }
+  .pass dl { margin: 0; padding: 8px 24px 12px; display: grid; grid-template-columns: auto 1fr; }
+  .pass dt, .pass dd { margin: 0; padding: 14px 0; border-top: 1px dashed var(--line); }
+  .pass dl > :nth-child(-n+2) { border-top: 0; }
+  .pass dt { font: 600 11px/1.6 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase;
+             color: var(--muted); padding-right: 20px; }
+  .pass dd { font: 600 16px/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--brand); text-align: right; }
   .privacy { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .privacy ul.checks li::before { box-shadow: inset 0 0 0 3px var(--surface), inset 0 0 0 8px var(--accent); }
   .closing { text-align: center; }
@@ -190,6 +202,7 @@
     <p class="lede">Share one invite link and watch your whole group land, live. When the trip is over, we delete it.</p>
     <div class="cta">
       <a class="btn" href="mailto:hello@rogeruplabs.com?subject=Tell%20me%20when%20GatherFlights%20launches">Email me when it launches</a>
+      <span class="cta-note mono">Pay per trip &middot; No subscription</span>
     </div>
   </div>
 
@@ -246,6 +259,24 @@
           <h3>Everyone's in the loop.</h3>
           <p>The whole group uses the GatherFlights app, so everyone gets the board and a ping when someone lands. Starting on iPhone.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>Pay for the trip, not a subscription.</h2>
+        <p class="sec-lede">Most of us gather a few times a year, not every month. So you pay once for the trip you're planning. Nothing renews and there's nothing to remember to cancel.</p>
+      </div>
+      <div class="pass" role="img" aria-label="Pay per trip: one trip, one payment, never renews, trip data deleted when the trip ends">
+        <div class="pass-head"><span>Your trip</span><span>Pay per trip</span></div>
+        <dl>
+          <dt>Payments</dt><dd>One per trip</dd>
+          <dt>Renews</dt><dd>Never</dd>
+          <dt>Monthly fee</dt><dd>None</dd>
+          <dt>Trip data</dt><dd>Deleted after</dd>
+        </dl>
       </div>
     </div>
   </section>
