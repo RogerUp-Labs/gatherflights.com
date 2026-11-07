@@ -89,6 +89,10 @@
   .btn:hover { filter: brightness(1.06); }
   .btn:focus-visible, #mark-hit:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
   .cta-note { color: var(--muted); font-size: 15px; }
+  .cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--line); padding: 14px 23px; }
+  .btn.ghost:hover { border-color: var(--accent); filter: none; }
+  .sec-lede + .btn { margin-top: 4px; }
 
   /* arrivals board */
   .board { background: var(--board); color: var(--board-ink); border-radius: 16px; padding: 22px 22px 14px;
@@ -215,7 +219,10 @@
     <h1>Everyone's flights, <span class="hl">one arrivals board.</span></h1>
     <p class="lede">Share one invite link and watch your whole group land, live. When the trip is over, we delete it.</p>
     <div class="cta">
-      <a class="btn" href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">Email me when it launches</a>
+      <div class="cta-buttons">
+        <a class="btn" href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">Email me when it launches</a>
+        <a class="btn ghost" href="https://app.gatherflights.com/demo">Try a demo trip</a>
+      </div>
       <span class="cta-note mono">Pay per trip &middot; No subscription</span>
     </div>
   </div>
@@ -228,6 +235,8 @@
       <div>
         <h2>Who's landed, who's in the air, who's still at home.</h2>
         <p class="sec-lede">One board for the wedding weekend, the family reunion or the friends' trip. No more group texts asking whether anyone has landed yet.</p>
+        <a class="btn ghost" href="https://app.gatherflights.com/demo">Play a demo trip</a>
+        <p class="cta-note">A made-up ski weekend on the real board. No sign-up, and nothing you do there is saved.</p>
       </div>
       <div class="board" role="img" aria-label="Example arrivals board showing five guests: three landed, one in the air, one scheduled">
         <div class="board-head">
