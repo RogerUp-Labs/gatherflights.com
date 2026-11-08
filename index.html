@@ -91,6 +91,12 @@
   .cta-note { color: var(--muted); font-size: 15px; }
   .cta-buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--line); padding: 14px 23px; }
+  .notify { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 480px; margin: 0 auto; scroll-margin-top: 40vh; }
+  .notify input { flex: 1 1 240px; min-width: 0; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--line);
+                  background: var(--surface); color: var(--ink); font: inherit; font-size: 17px; }
+  .notify input:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .notify .btn { border: 0; font: inherit; font-weight: 700; cursor: pointer; }
+  .sr, .hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .btn.ghost:hover { border-color: var(--accent); filter: none; }
   .sec-lede + .btn { margin-top: 4px; }
 
@@ -287,7 +293,7 @@
     <p class="lede">Share one invite link and watch your whole group land, live. When the trip is over, we delete it.</p>
     <div class="cta">
       <div class="cta-buttons">
-        <a class="btn" href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">Email me when it launches</a>
+        <a class="btn" href="#notify">Email me when it launches</a>
         <a class="btn ghost" href="https://app.gatherflights.com/demo">Try a demo trip</a>
       </div>
       <span class="cta-note mono">Pay per trip &middot; No subscription</span>
@@ -452,8 +458,13 @@
     <div class="wrap">
       <h2>Be first on the board.</h2>
       <p>We'll send one email when GatherFlights is ready. That's it.</p>
-      <a class="btn" href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">Email me when it launches</a>
-      <p class="cta-note" style="margin-top:14px">Opens your email app. Or write to <a href="mailto:hello@gatherflights.com">hello@gatherflights.com</a>.</p>
+      <form class="notify" id="notify" action="https://app.gatherflights.com/v1/launch-list" method="post">
+        <label class="sr" for="notify-email">Your email address</label>
+        <input id="notify-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn" type="submit">Notify me</button>
+      </form>
+      <p class="cta-note" style="margin-top:14px">Your address is used for this one email, then deleted. Or write to <a href="mailto:hello@gatherflights.com">hello@gatherflights.com</a>.</p>
     </div>
   </section>
 </main>
