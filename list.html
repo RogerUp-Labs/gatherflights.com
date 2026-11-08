@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GatherFlights launch list</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="icon.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  @font-face { font-family: "Archivo"; src: url("fonts/archivo.woff2") format("woff2");
+               font-weight: 100 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2");
+               font-weight: 100 800; font-style: normal; font-display: swap; }
+
+  :root {
+    --bg: #F1F4F3; --surface: #FFFFFF; --ink: #0E2A2F; --muted: #557074; --line: #D7E0DF;
+    --brand: #0E3B43; --accent: #F0533C;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0A2328; --surface: #0E3B43; --ink: #E8F1EF; --muted: #9DBDBA; --line: #1D525B; --brand: #CFE5E2; }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 18px/1.6 "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--brand); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
+           letter-spacing: -0.01em; color: var(--brand); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; }
+  main { padding: 32px 0 56px; }
+  .eyebrow { font: 600 13px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em;
+             text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1 { font-size: clamp(34px, 6vw, 48px); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800;
+       color: var(--brand); margin: 0 0 16px; }
+  .updated { font: 13px/1.4 "JetBrains Mono", ui-monospace, monospace; color: var(--muted); margin: 0 0 32px; }
+  .summary { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; margin: 0 0 40px; }
+  .summary p { margin: 0; }
+  h2 { font-size: 23px; color: var(--brand); letter-spacing: -0.01em; margin: 36px 0 8px; }
+  p, li { color: var(--ink); }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; }
+  footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; padding: 26px 0 40px; }
+  .msg { display: none; }
+  .msg:target { display: block; }
+  body:not(:has(.msg:target)) #added { display: block; }
+  .btn { display: inline-block; margin-top: 8px; padding: 14px 22px; border-radius: 10px; background: var(--accent);
+         color: #fff; font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="./"><img src="icon.svg" alt="" width="30" height="30">GatherFlights</a>
+</header>
+
+<main class="wrap">
+  <section class="msg" id="added">
+    <p class="eyebrow">Launch list</p>
+    <h1>You're on the list.</h1>
+    <p>We'll send you one email when GatherFlights launches, then delete your address. Nothing else.</p>
+    <a class="btn" href="./">Back to GatherFlights</a>
+  </section>
+  <section class="msg" id="not-added">
+    <p class="eyebrow">Launch list</p>
+    <h1>That didn't go through.</h1>
+    <p>Check the email address and try again. Or write to <a href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">hello@gatherflights.com</a> and we'll add you.</p>
+    <a class="btn" href="./#notify">Try again</a>
+  </section>
+  <section class="msg" id="busy">
+    <p class="eyebrow">Launch list</p>
+    <h1>Lots of sign-ups right now.</h1>
+    <p>Please try again a little later, or write to <a href="mailto:hello@gatherflights.com?subject=Tell%20me%20when%20GatherFlights%20launches">hello@gatherflights.com</a> and we'll add you.</p>
+    <a class="btn" href="./">Back to GatherFlights</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">A <a href="https://rogeruplabs.com">RogerUp Labs</a> project &nbsp;·&nbsp; <a href="./">Home</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></div>
+</footer>
+</body>
+</html>
