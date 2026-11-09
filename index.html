@@ -207,7 +207,14 @@
   @media (min-width: 860px) { .split { grid-template-columns: 1fr 1.15fr; } }
   .modes .card { padding: 28px; }
   /* demo picker: plain radio buttons styled as a slide switch, no script */
-  .demo { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; max-width: 460px; }
+  .demo { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-top: 40px; }
+  @media (min-width: 760px) {
+    .demo { display: grid; grid-template-columns: minmax(300px, 1fr) 1.15fr; column-gap: 40px; padding: 28px 32px;
+            grid-template-areas: "h panel" "seg panel" "note panel"; align-items: start; }
+    .demo-h { grid-area: h; } .seg { grid-area: seg; } .dm-panel { grid-area: panel; align-self: center; }
+    .demo .cta-note { grid-area: note; }
+    .dm-panel p:last-child, .dm-panel .btn:last-child { margin-bottom: 0; }
+  }
   .demo-h { margin: 0 0 14px; font-size: 19px; color: var(--brand); letter-spacing: -0.01em; }
   .demo input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
   .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 10px;
@@ -328,6 +335,26 @@
       <div>
         <h2>Who's landed, who's in the air, who's running late.</h2>
         <p class="sec-lede">One board for the friends' trip, the family reunion, the con weekend or the wedding weekend. Every status has its own colour, symbol and word, so the board reads at a glance, even if you can't tell red from green.</p>
+      </div>
+      <div class="board" role="img" aria-label="Example arrivals board for a ski weekend in Denver: Leo arrived, Priya and Jordan landing, you in the air, Chris on time, Maya delayed">
+        <div class="board-head">
+          <span class="board-title">Arrivals <b>&bull;</b> Denver</span>
+          <span class="board-sub">Live</span>
+        </div>
+        <table>
+          <thead><tr><th>Who</th><th>Flight</th><th class="hide-sm">Lands</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Leo</td><td>AA 1717</td><td class="hide-sm t">10:25 AM</td><td><span class="status"><span class="b-gate"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M-4.5,0.5 L-1.2,3.8 L5,-3.5"/></svg>ARRIVED</span></span></td></tr>
+            <tr><td>Priya &amp; Jordan</td><td>B6 469</td><td class="hide-sm t">11:05 AM</td><td><span class="status flips" style="--d:2.4s"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span><span class="b-landed"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(30)"/></svg>LANDED</span></span></td></tr>
+            <tr><td class="you">You</td><td>UA 1544</td><td class="hide-sm t">11:40 AM</td><td><span class="status"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span></span></td></tr>
+            <tr><td>Chris</td><td>WN 1388</td><td class="hide-sm t">2:20 PM</td><td><span class="status"><span class="b-clock"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M0,-5.5 V0 L3.5,2.5"/></svg>ON TIME</span></span></td></tr>
+            <tr><td>Maya</td><td>WN 2210</td><td class="hide-sm t"><span class="was">2:05</span>2:45 PM</td><td><span class="status"><span class="b-warn"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M0,-10.5 L11,9.5 H-11 Z"/><path d="M0,-3 V3 M0,6.2 V6.4"/></svg>DELAYED</span></span></td></tr>
+          </tbody>
+        </table>
+        <div class="board-foot">Example trip. Names and flights are made up.</div>
+      </div>
+    </div>
+    <div class="wrap">
         <div class="demo" id="demo">
           <h3 class="demo-h" id="demo-h">Play a demo trip</h3>
           <input type="radio" name="demo-mode" id="dm-group" checked>
@@ -355,24 +382,6 @@
           </div>
           <p class="cta-note">Made-up trips on the real board. No sign-up, and nothing you do there is saved.</p>
         </div>
-      </div>
-      <div class="board" role="img" aria-label="Example arrivals board for a ski weekend in Denver: Leo arrived, Priya and Jordan landing, you in the air, Chris on time, Maya delayed">
-        <div class="board-head">
-          <span class="board-title">Arrivals <b>&bull;</b> Denver</span>
-          <span class="board-sub">Live</span>
-        </div>
-        <table>
-          <thead><tr><th>Who</th><th>Flight</th><th class="hide-sm">Lands</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>Leo</td><td>AA 1717</td><td class="hide-sm t">10:25 AM</td><td><span class="status"><span class="b-gate"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M-4.5,0.5 L-1.2,3.8 L5,-3.5"/></svg>ARRIVED</span></span></td></tr>
-            <tr><td>Priya &amp; Jordan</td><td>B6 469</td><td class="hide-sm t">11:05 AM</td><td><span class="status flips" style="--d:2.4s"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span><span class="b-landed"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(30)"/></svg>LANDED</span></span></td></tr>
-            <tr><td class="you">You</td><td>UA 1544</td><td class="hide-sm t">11:40 AM</td><td><span class="status"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span></span></td></tr>
-            <tr><td>Chris</td><td>WN 1388</td><td class="hide-sm t">2:20 PM</td><td><span class="status"><span class="b-clock"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M0,-5.5 V0 L3.5,2.5"/></svg>ON TIME</span></span></td></tr>
-            <tr><td>Maya</td><td>WN 2210</td><td class="hide-sm t"><span class="was">2:05</span>2:45 PM</td><td><span class="status"><span class="b-warn"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M0,-10.5 L11,9.5 H-11 Z"/><path d="M0,-3 V3 M0,6.2 V6.4"/></svg>DELAYED</span></span></td></tr>
-          </tbody>
-        </table>
-        <div class="board-foot">Example trip. Names and flights are made up.</div>
-      </div>
     </div>
   </section>
 
