@@ -161,13 +161,28 @@
   .notif-top span:last-child { text-transform: none; letter-spacing: 0; }
   .notif b { display: block; }
   .switches { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 6px; padding: 0; list-style: none; }
-  .switches li { font-size: 12px; color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 4px 10px; }
-  .switches li.on { border-color: var(--accent); }
-  .switches li.on::before { content: "\2713\00a0"; color: var(--accent); font-weight: 700; }
+  .switches label { display: block; cursor: pointer; }
+  .switches input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .switches span { display: block; font-size: 12px; color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 4px 10px; }
+  .switches input:checked + span { border-color: var(--accent); }
+  .switches input:checked + span::before { content: "\2713\00a0"; color: var(--accent); font-weight: 700; }
+  .phone:has(#sw-land:not(:checked)) .n-land { display: none; }
+  .phone:has(#sw-delay:not(:checked)) .n-delay { display: none; }
+  .phone:has(#sw-takeoff:not(:checked)) .n-takeoff { display: none; }
+  .phone:has(#sw-outing:not(:checked)) .n-outing { display: none; }
+  .notifs-empty { display: none; text-align: center; color: #CFE5E2; font-size: 13px; padding: 18px 0; }
+  .phone:has(#sw-land:not(:checked)):has(#sw-delay:not(:checked)):has(#sw-takeoff:not(:checked)):has(#sw-outing:not(:checked)) .notifs-empty { display: block; }
   .switches-label { text-align: center; color: #CFE5E2; font-size: 12px; margin-top: 4px; }
   .rebook { margin-top: 26px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
             border-radius: 12px; padding: 16px 18px; font-size: 16px; }
   .rebook b { color: var(--brand); }
+  .rebook > input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .rebook label { cursor: pointer; }
+  .rebook > input:focus-visible ~ label.fake-btn { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .rb-done { display: none; margin-top: 10px; color: var(--muted); }
+  .rb-done label { color: var(--brand); text-decoration: underline; margin-left: 4px; }
+  #rb-try:checked ~ .fake-btn { display: none; }
+  #rb-try:checked ~ .rb-done { display: block; }
   .rebook .fake-btn { display: inline-block; margin-top: 10px; background: var(--accent); color: var(--accent-ink); font-weight: 700;
                       font-size: 14px; border-radius: 8px; padding: 7px 12px; }
 
@@ -178,14 +193,28 @@
                      color: var(--accent); margin: 0 0 10px; }
   .consent h3 { margin: 0 0 16px; font-size: 21px; line-height: 1.25; color: var(--brand); }
   .consent ul { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 12px; }
-  .consent li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 16px; line-height: 1.35; }
-  .consent li::before { content: ""; width: 18px; height: 18px; margin-top: 1px; border-radius: 5px; border: 2px solid var(--line); }
-  .consent li.on::before { border-color: var(--accent); background: var(--accent)
+  .consent label { cursor: pointer; }
+  .consent li label { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 16px; line-height: 1.35; }
+  .consent li input { appearance: none; -webkit-appearance: none; margin: 1px 0 0; width: 18px; height: 18px; border-radius: 5px;
+                      border: 2px solid var(--line); background: transparent; cursor: pointer; }
+  .consent li input:focus-visible, .switches input:focus-visible + span { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .consent > input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .consent > input:focus-visible ~ .row label, .consent > input:focus-visible ~ .c-foot label { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .c-result, .c-foot .c-again { display: none; }
+  #c-allow:checked ~ .c-ask, #c-no:checked ~ .c-ask { display: none; }
+  #c-allow:checked ~ .c-yes, #c-no:checked ~ .c-nope { display: block; }
+  #c-allow:checked ~ .c-foot .c-again, #c-no:checked ~ .c-foot .c-again { display: inline; }
+  .c-result { padding: 14px 16px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); margin-bottom: 4px; }
+  .c-result b { display: block; color: var(--brand); font-size: 18px; margin-bottom: 2px; }
+  .c-yes { border-left: 4px solid var(--accent); }
+  .c-foot { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+  .c-again { color: var(--brand); text-decoration: underline; margin-left: 4px; }
+  .consent li input:checked { border-color: var(--accent); background: var(--accent)
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; }
   .consent li span { color: var(--muted); font-size: 14px; display: block; }
   .consent li b { color: var(--brand); font-weight: 600; }
   .consent .row { display: flex; gap: 10px; }
-  .consent .fake-btn { background: var(--accent); color: var(--accent-ink); font-weight: 700; border-radius: 10px; padding: 11px 20px; font-size: 16px; }
+  .consent .fake-btn { display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 700; border-radius: 10px; padding: 11px 20px; font-size: 16px; }
   .consent .fake-btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--line); }
   .assist .checks { margin-bottom: 22px; }
   .small-note { color: var(--muted); font-size: 15px; margin: 0; }
@@ -396,21 +425,24 @@
           <li><span><b>Reminders for the plans.</b> Turn on a reminder for outings like dinner or the first ski day, as early as you like. Your phone works it out, so we never see the times.</span></li>
         </ul>
         <div class="rebook">
+          <input type="checkbox" id="rb-try">
           <b>AA 404 was cancelled.</b> Once the airline rebooks you, add your new flight so everyone sees when you'll really get there.<br>
-          <span class="fake-btn" aria-hidden="true">Add my new flight</span>
+          <label for="rb-try" class="fake-btn">Add my new flight</label>
+          <span class="rb-done" role="status">In the app you'd type your new flight number next, and the board updates for everyone. <label for="rb-try">Back</label></span>
         </div>
         <p class="cta-note">When a flight is cancelled, the board asks its traveller for the new one, so the group never plans around a flight that isn't going.</p>
       </div>
-      <div class="phone" role="img" aria-label="Example phone lock screen with GatherFlights alerts: Priya and Jordan landed, Maya is running 40 minutes late, Chris took off, and a reminder about tomorrow's ski day">
+      <div class="phone" role="group" aria-label="Example phone lock screen with GatherFlights alerts: Priya and Jordan landed, Maya is running 40 minutes late, Chris took off, and a reminder about tomorrow's ski day">
         <div class="phone-lock" aria-hidden="true"><div class="phone-day">Friday, November 13</div><div class="phone-time">11:05</div></div>
         <ul class="notifs" aria-hidden="true">
-          <li class="notif" style="--d:3.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>now</span></div><b>Ski weekend</b>Priya and Jordan landed at DEN.</div></li>
-          <li class="notif" style="--d:2.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>20m ago</span></div><b>Ski weekend</b>Maya's WN 2210 is running 40 min late. Now lands 2:45 PM.</div></li>
-          <li class="notif" style="--d:1.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>1h ago</span></div><b>Ski weekend</b>Chris took off from AUS. WN 1388 lands DEN at 2:20 PM.</div></li>
-          <li class="notif" style="--d:.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>yesterday</span></div><b>Ski day tomorrow</b>8:30 AM. Lift tickets are at the cabin.</div></li>
+          <li class="notif n-land" style="--d:3.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>now</span></div><b>Ski weekend</b>Priya and Jordan landed at DEN.</div></li>
+          <li class="notif n-delay" style="--d:2.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>20m ago</span></div><b>Ski weekend</b>Maya's WN 2210 is running 40 min late. Now lands 2:45 PM.</div></li>
+          <li class="notif n-takeoff" style="--d:1.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>1h ago</span></div><b>Ski weekend</b>Chris took off from AUS. WN 1388 lands DEN at 2:20 PM.</div></li>
+          <li class="notif n-outing" style="--d:.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>yesterday</span></div><b>Ski day tomorrow</b>8:30 AM. Lift tickets are at the cabin.</div></li>
         </ul>
-        <div class="switches-label" aria-hidden="true">Your alert settings</div>
-        <ul class="switches" aria-hidden="true"><li class="on">Friends land</li><li>Friends take off</li><li class="on">Delays</li><li class="on">My flight</li><li class="on">Outing reminders</li></ul>
+        <p class="notifs-empty" aria-hidden="true">All quiet. Turn a switch back on.</p>
+        <div class="switches-label">Your alert settings (try them)</div>
+        <ul class="switches"><li><label><input type="checkbox" id="sw-land" checked><span>Friends land</span></label></li><li><label><input type="checkbox" id="sw-takeoff" checked><span>Friends take off</span></label></li><li><label><input type="checkbox" id="sw-delay" checked><span>Delays</span></label></li><li><label><input type="checkbox" id="sw-mine" checked><span>My flight</span></label></li><li><label><input type="checkbox" id="sw-outing" checked><span>Outing reminders</span></label></li></ul>
       </div>
     </div>
   </section>
@@ -428,17 +460,24 @@
         </ul>
         <p class="small-note">Building an assistant? Start with <a href="https://app.gatherflights.com/agents.md">agents.md</a>.</p>
       </div>
-      <div class="consent" role="img" aria-label="Example approval screen: Claude asks to help with a ski weekend trip. See your flights, add or change your flights and get your alerts are ticked; see the arrivals board and see people's names are not.">
-        <p class="kicker" aria-hidden="true">Connect an assistant</p>
-        <h3 aria-hidden="true">Claude wants to help with Ski weekend in Breckenridge</h3>
-        <ul aria-hidden="true">
-          <li class="on"><div><b>See your flights</b><span>Your own flights and how they're doing.</span></div></li>
-          <li class="on"><div><b>Add or change your flights</b><span>Only yours, never anyone else's.</span></div></li>
-          <li class="on"><div><b>Get your alerts</b><span>The same alerts your phone gets for this trip.</span></div></li>
-          <li><div><b>See the arrivals board</b><span>Only in group trips, and only if the organizer allows it.</span></div></li>
-          <li><div><b>Let it see people's names</b><span>Leave off and it sees flights without names.</span></div></li>
+      <div class="consent" role="group" aria-label="Example approval screen. Try it: nothing is sent anywhere.">
+        <input type="radio" name="consent" id="c-ask" checked>
+        <input type="radio" name="consent" id="c-allow">
+        <input type="radio" name="consent" id="c-no">
+        <p class="kicker">Connect an assistant</p>
+        <h3>Claude wants to help with Ski weekend in Breckenridge</h3>
+        <ul class="c-ask">
+          <li><label><input type="checkbox" checked><div><b>See your flights</b><span>Your own flights and how they're doing.</span></div></label></li>
+          <li><label><input type="checkbox" checked><div><b>Add or change your flights</b><span>Only yours, never anyone else's.</span></div></label></li>
+          <li><label><input type="checkbox" checked><div><b>Get your alerts</b><span>The same alerts your phone gets for this trip.</span></div></label></li>
+          <li><label><input type="checkbox"><div><b>See the arrivals board</b><span>Only in group trips, and only if the organizer allows it.</span></div></label></li>
+          <li><label><input type="checkbox"><div><b>Let it see people's names</b><span>Leave off and it sees flights without names.</span></div></label></li>
         </ul>
-        <div class="row" aria-hidden="true"><span class="fake-btn">Allow</span><span class="fake-btn ghost">Not now</span></div>
+        <div class="row c-ask"><label for="c-allow" class="fake-btn">Allow</label><label for="c-no" class="fake-btn ghost">Not now</label></div>
+        <div class="c-result c-yes" role="status"><b>Claude is connected.</b> It can help with the things you ticked, and only for you. You can switch it off any time.</div>
+        <div class="c-result c-nope" role="status"><b>No problem.</b> Claude can't see anything from this trip. You can connect it later.</div>
+        <p class="c-foot">Just an example, nothing is sent. <label for="c-ask" class="c-again">Try again</label></p>
+      </div>
       </div>
     </div>
   </section>
