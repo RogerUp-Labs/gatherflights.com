@@ -166,11 +166,12 @@
   .switches span { display: block; font-size: 12px; color: #fff; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 4px 10px; }
   .switches input:checked + span { border-color: var(--accent); }
   .switches input:checked + span::before { content: "\2713\00a0"; color: var(--accent); font-weight: 700; }
-  .phone:has(#sw-land:not(:checked)) .n-land { display: none; }
-  .phone:has(#sw-delay:not(:checked)) .n-delay { display: none; }
-  .phone:has(#sw-takeoff:not(:checked)) .n-takeoff { display: none; }
-  .phone:has(#sw-outing:not(:checked)) .n-outing { display: none; }
-  .notifs-empty { display: none; text-align: center; color: #CFE5E2; font-size: 13px; padding: 18px 0; }
+  .phone:has(#sw-land:not(:checked)) .n-land { visibility: hidden; order: 1; }
+  .phone:has(#sw-delay:not(:checked)) .n-delay { visibility: hidden; order: 1; }
+  .phone:has(#sw-takeoff:not(:checked)) .n-takeoff { visibility: hidden; order: 1; }
+  .phone:has(#sw-outing:not(:checked)) .n-outing { visibility: hidden; order: 1; }
+  .notifs-empty { display: none; position: absolute; left: 0; right: 0; text-align: center; color: #CFE5E2; font-size: 13px; padding: 18px 0; margin: 0; }
+  .notifs-wrap { position: relative; }
   .phone:has(#sw-land:not(:checked)):has(#sw-delay:not(:checked)):has(#sw-takeoff:not(:checked)):has(#sw-outing:not(:checked)) .notifs-empty { display: block; }
   .switches-label { text-align: center; color: #CFE5E2; font-size: 12px; margin-top: 4px; }
   .rebook { margin-top: 26px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
@@ -431,13 +432,13 @@
       </div>
       <div class="phone" role="group" aria-label="Example phone lock screen with GatherFlights alerts: Priya and Jordan landed, Maya is running 40 minutes late, Chris took off, and a reminder about tomorrow's ski day">
         <div class="phone-lock" aria-hidden="true"><div class="phone-day">Friday, November 13</div><div class="phone-time">11:05</div></div>
+        <div class="notifs-wrap"><p class="notifs-empty" aria-hidden="true">All quiet. Turn a switch back on.</p>
         <ul class="notifs" aria-hidden="true">
           <li class="notif n-land" style="--d:3.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>now</span></div><b>Ski weekend</b>Priya and Jordan landed at DEN.</div></li>
           <li class="notif n-delay" style="--d:2.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>20m ago</span></div><b>Ski weekend</b>Maya's WN 2210 is running 40 min late. Now lands 2:45 PM.</div></li>
           <li class="notif n-takeoff" style="--d:1.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>1h ago</span></div><b>Ski weekend</b>Chris took off from AUS. WN 1388 lands DEN at 2:20 PM.</div></li>
           <li class="notif n-outing" style="--d:.4s"><img src="apple-touch-icon.png" alt=""><div class="notif-text"><div class="notif-top"><span>GatherFlights</span><span>yesterday</span></div><b>Ski day tomorrow</b>8:30 AM. Lift tickets are at the cabin.</div></li>
-        </ul>
-        <p class="notifs-empty" aria-hidden="true">All quiet. Turn a switch back on.</p>
+        </ul></div>
         <div class="switches-label">Your alert settings (try them)</div>
         <ul class="switches"><li><label><input type="checkbox" id="sw-land" checked><span>Friends land</span></label></li><li><label><input type="checkbox" id="sw-takeoff" checked><span>Friends take off</span></label></li><li><label><input type="checkbox" id="sw-delay" checked><span>Delays</span></label></li><li><label><input type="checkbox" id="sw-mine" checked><span>My flight</span></label></li><li><label><input type="checkbox" id="sw-outing" checked><span>Outing reminders</span></label></li></ul>
       </div>
