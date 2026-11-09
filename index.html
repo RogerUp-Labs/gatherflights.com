@@ -206,6 +206,27 @@
   .split { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: center; }
   @media (min-width: 860px) { .split { grid-template-columns: 1fr 1.15fr; } }
   .modes .card { padding: 28px; }
+  /* demo picker: plain radio buttons styled as a slide switch, no script */
+  .demo { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; max-width: 460px; }
+  .demo-h { margin: 0 0 14px; font-size: 19px; color: var(--brand); letter-spacing: -0.01em; }
+  .demo input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 10px;
+         background: var(--bg); border: 1px solid var(--line); margin-bottom: 18px; }
+  .seg label { text-align: center; padding: 10px 6px; border-radius: 7px; font-weight: 700; font-size: 15px;
+               color: var(--muted); cursor: pointer; user-select: none; }
+  .seg label:hover { color: var(--brand); }
+  #dm-group:checked ~ .seg [for=dm-group], #dm-host:checked ~ .seg [for=dm-host], #dm-solo:checked ~ .seg [for=dm-solo]
+    { background: var(--brand); color: var(--bg); }
+  #dm-group:focus-visible ~ .seg [for=dm-group], #dm-host:focus-visible ~ .seg [for=dm-host], #dm-solo:focus-visible ~ .seg [for=dm-solo]
+    { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .dm-panel { display: none; }
+  #dm-group:checked ~ .p-group, #dm-host:checked ~ .p-host, #dm-solo:checked ~ .p-solo { display: block; }
+  .dm-panel p { margin: 0 0 16px; color: var(--muted); }
+  .dm-panel .dm-lead { margin-bottom: 6px; color: var(--ink); font-weight: 700; }
+  .soon { font: 600 11px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase;
+          color: var(--accent); border: 1px solid var(--accent); border-radius: 6px; padding: 4px 6px; margin-left: 6px; vertical-align: 2px; }
+  .dm-wait { font-style: italic; }
+  .demo .cta-note { margin: 16px 0 0; font-size: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
   .tag { display: inline-block; font: 600 11px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .12em;
          text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 6px;
          padding: 6px 8px; margin-bottom: 16px; }
@@ -294,7 +315,6 @@
     <div class="cta">
       <div class="cta-buttons">
         <a class="btn" href="#notify">Email me when it launches</a>
-        <a class="btn ghost" href="https://app.gatherflights.com/demo">Try a demo trip</a>
       </div>
       <span class="cta-note mono">Pay per trip &middot; No subscription</span>
     </div>
@@ -308,8 +328,33 @@
       <div>
         <h2>Who's landed, who's in the air, who's running late.</h2>
         <p class="sec-lede">One board for the friends' trip, the family reunion, the con weekend or the wedding weekend. Every status has its own colour, symbol and word, so the board reads at a glance, even if you can't tell red from green.</p>
-        <a class="btn ghost" href="https://app.gatherflights.com/demo">Play a demo trip</a>
-        <p class="cta-note">A made-up ski weekend on the real board. No sign-up, and nothing you do there is saved.</p>
+        <div class="demo" id="demo">
+          <h3 class="demo-h" id="demo-h">Play a demo trip</h3>
+          <input type="radio" name="demo-mode" id="dm-group" checked>
+          <input type="radio" name="demo-mode" id="dm-host">
+          <input type="radio" name="demo-mode" id="dm-solo">
+          <div class="seg">
+            <label for="dm-group">Group trip</label>
+            <label for="dm-host">Host mode</label>
+            <label for="dm-solo">Solo</label>
+          </div>
+          <div class="dm-panel p-group">
+            <p class="dm-lead">Friends, family, your con crew.</p>
+            <p>Everyone has the app, adds their own flight and sees the same live board, with a ping when someone lands.</p>
+            <a class="btn" href="https://app.gatherflights.com/demo">Play the ski weekend demo</a>
+          </div>
+          <div class="dm-panel p-host">
+            <p class="dm-lead">Weddings and events.</p>
+            <p>You run the trip. Guests add their flight on a simple web page, with no app and no account. You see who's landed and plan pickups and rides back.</p>
+            <a class="btn" href="https://app.gatherflights.com/demo/wedding">Play the wedding demo</a>
+          </div>
+          <div class="dm-panel p-solo">
+            <p class="dm-lead">Just you flying. <span class="soon">Coming soon</span></p>
+            <p>Share your own flight with the people waiting for you, so they know when to head to the airport.</p>
+            <p class="dm-wait">This demo isn't ready yet.</p>
+          </div>
+          <p class="cta-note">Made-up trips on the real board. No sign-up, and nothing you do there is saved.</p>
+        </div>
       </div>
       <div class="board" role="img" aria-label="Example arrivals board for a ski weekend in Denver: Leo arrived, Priya and Jordan landing, you in the air, Chris on time, Maya delayed">
         <div class="board-head">
@@ -404,7 +449,7 @@
   <section class="modes">
     <div class="wrap">
       <h2>Made for the way you gather</h2>
-      <p class="sec-lede">Friends' trips, con weekends and weddings. Pick the one that fits your trip.</p>
+      <p class="sec-lede">Friends' trips, family reunions and con weekends. Hosting a wedding? <a href="#demo">Try host mode in the demo</a>.</p>
       <div class="grid">
         <div class="card">
           <span class="tag">Friends &amp; family</span>
@@ -415,12 +460,6 @@
           <span class="tag">Convention crews</span>
           <h3>Your con crew, all accounted for.</h3>
           <p>Flying in from five cities for the same con? Everyone adds their flight, so the whole crew can see who's landed, who's still in the air, and who to wait for before heading to the hotel.</p>
-        </div>
-        <div class="card">
-          <span class="tag">Weddings &amp; events</span>
-          <h3>Hosts see everything. Guests fill in one form.</h3>
-          <p>Guests add their flight on a simple web page. No app to install and no account to make. You see who's arrived and who still needs a ride from the airport, and plan pickups and rides back.</p>
-          <p><a href="https://app.gatherflights.com/demo/wedding">Try the wedding demo</a></p>
         </div>
       </div>
     </div>
