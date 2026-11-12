@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How your names stay private · GatherFlights</title>
+<meta name="description" content="Why GatherFlights can't read the names in your trip: they're scrambled on your phone before they're sent, and only the end of the invite link can unscramble them.">
+<link rel="canonical" href="https://gatherflights.com/help/names.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="GatherFlights">
+<meta property="og:title" content="How your names stay private">
+<meta property="og:description" content="Names are scrambled on your phone before they reach us. Only the end of the invite link can unscramble them, and it never reaches us.">
+<meta property="og:url" content="https://gatherflights.com/help/names.html">
+<meta property="og:image" content="https://gatherflights.com/og-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="icon" href="../icon.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="help.css">
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="../"><img src="../icon.svg" alt="" width="30" height="30">GatherFlights</a>
+  <a class="top-link" href="./">Help</a>
+</header>
+
+<main class="wrap">
+  <p class="eyebrow">Privacy in the app</p>
+  <h1>How your names stay private</h1>
+
+  <div class="summary">
+    <p><b>Short version:</b> names are scrambled on your phone or computer before they reach us. Only the end of the invite link can unscramble them, and that part never reaches us.</p>
+  </div>
+
+  <figure class="diagram">
+    <svg viewBox="0 0 360 282" role="img" aria-label="Diagram. Your phone shows the name Maya. It sends only scrambled text, like x9$k, to our server, which can't read it. The server passes the scrambled text to a friend's phone, which shows Maya again. The end of the invite link goes straight from your phone to your friend's phone and never passes through our server." xmlns="http://www.w3.org/2000/svg">
+      <!-- Your phone -->
+      <rect class="dg-box" x="12" y="14" width="84" height="138" rx="16"/>
+      <rect class="dg-screen" x="20" y="30" width="68" height="104" rx="6"/>
+      <text class="dg-name" x="54" y="89" text-anchor="middle">Maya</text>
+      <text class="dg-label" x="54" y="174" text-anchor="middle">Your phone</text>
+
+      <!-- Our server -->
+      <rect class="dg-box" x="138" y="34" width="84" height="98" rx="8"/>
+      <line class="dg-rack" x1="150" y1="52" x2="210" y2="52"/>
+      <line class="dg-rack" x1="150" y1="114" x2="210" y2="114"/>
+      <text class="dg-junk" x="180" y="89" text-anchor="middle">x9$k…</text>
+      <text class="dg-label" x="180" y="174" text-anchor="middle">Our server</text>
+      <text class="dg-small" x="180" y="191" text-anchor="middle">can't read it</text>
+
+      <!-- Friend's phone -->
+      <rect class="dg-box" x="264" y="14" width="84" height="138" rx="16"/>
+      <rect class="dg-screen" x="272" y="30" width="68" height="104" rx="6"/>
+      <text class="dg-name" x="306" y="89" text-anchor="middle">Maya</text>
+      <text class="dg-label" x="306" y="174" text-anchor="middle">Friend's phone</text>
+
+      <!-- Scrambled text arrows -->
+      <line class="dg-arrow" x1="100" y1="83" x2="127" y2="83"/>
+      <path class="dg-head" d="M135 83 L125 77.5 L125 88.5 Z"/>
+      <line class="dg-arrow" x1="226" y1="83" x2="253" y2="83"/>
+      <path class="dg-head" d="M261 83 L251 77.5 L251 88.5 Z"/>
+
+      <!-- The link's ending goes phone to phone, around the server -->
+      <path class="dg-link" d="M54 186 C54 236 306 236 306 198"/>
+      <path class="dg-link-head" d="M306 186 L300.5 197 L311.5 197 Z"/>
+      <text class="dg-link-text" x="180" y="254" text-anchor="middle">End of the link (after the #)</text>
+      <text class="dg-link-text" x="180" y="274" text-anchor="middle">goes phone to phone, never to us</text>
+    </svg>
+    <figcaption>The name leaves your phone already scrambled. What unscrambles it travels only inside the invite link you send.</figcaption>
+  </figure>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><p><b>Names are scrambled before they leave your device.</b> When you type your name, your phone or computer scrambles it before sending it to us. The same goes for the trip name and the trip info cards. (The technical word is encrypted.)</p></li>
+    <li><p><b>The end of the invite link unscrambles them.</b> An invite link has a part at the end, after the # sign. That's what turns the scrambled text back into names.</p></li>
+    <li><p><b>Browsers never send that part to any website.</b> It's how web browsers work: whatever comes after the # stays on your device. So it never reaches us.</p></li>
+    <li><p><b>So all we ever store is scrambled text.</b> We can't read the names in your trip, even if we wanted to.</p></li>
+    <li><p><b>That's why the whole link matters.</b> Without its end, names can't be read, so always send the whole invite link. Some apps cut long links short; if someone sees "This link is missing a piece", send it again. It's also why a new phone or computer needs an OK from a device that already has the trip, for example with <span class="btn-name">"Add a device"</span>.</p></li>
+  </ol>
+
+  <div class="note">
+    <p><b>Only send the link to people you mean to invite.</b> Anyone with the link can join the trip.</p>
+  </div>
+
+  <h2>Your email address</h2>
+  <p>If you organize trips, your email address isn't stored either. We keep a coded version that can only confirm it's you when you sign in again.</p>
+
+  <h2>What we can still see</h2>
+  <p>To follow flights and run your trip, some things can't be scrambled. We can see:</p>
+  <ul>
+    <li>Flight numbers, dates and airports, and each flight's live status.</li>
+    <li>How many people are in a trip, and how many flights.</li>
+    <li>When the trip ends, so we know when to delete it.</li>
+  </ul>
+  <p>If you turn on <span class="btn-name">"Hide my flight from the others"</span>, the others see you as +1, but your flight still reaches us so we can follow it.</p>
+  <p>Our flight information provider gets flight numbers and dates, never names. See <a href="what-we-keep.html">what we keep, and for how long</a>.</p>
+
+  <nav class="more" aria-labelledby="more-help">
+    <h2 id="more-help">More help</h2>
+    <ul class="links">
+      <li><a href="invite-link.html">You got an invite link. Now what?</a></li>
+      <li><a href="what-we-keep.html">What we keep, and for how long</a></li>
+      <li><a href="flight-info.html">Where flight information comes from</a></li>
+      <li><a href="./">All help</a></li>
+    </ul>
+  </nav>
+</main>
+
+<footer>
+  <div class="wrap">A <a href="https://rogeruplabs.com">RogerUp Labs</a> project <span class="sep" aria-hidden="true">·</span> <a href="../">Home</a> <span class="sep" aria-hidden="true">·</span> <a href="./">Help</a> <span class="sep" aria-hidden="true">·</span> <a href="../privacy.html">Privacy</a> <span class="sep" aria-hidden="true">·</span> <a href="https://app.gatherflights.com/problem?from=site">Something wrong?</a></div>
+</footer>
+</body>
+</html>
