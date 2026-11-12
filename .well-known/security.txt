@@ -1,0 +1,5 @@
+# Found a security problem with GatherFlights? Thank you for telling us.
+Contact: mailto:hello@gatherflights.com
+Expires: 2027-11-12T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://gatherflights.com/.well-known/security.txt
