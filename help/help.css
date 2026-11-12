@@ -1,0 +1,138 @@
+/* Shared look for the help pages. Same fonts and colors as privacy.html. */
+
+@font-face { font-family: "Archivo"; src: url("../fonts/archivo.woff2") format("woff2");
+             font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono.woff2") format("woff2");
+             font-weight: 100 800; font-style: normal; font-display: swap; }
+
+:root {
+  color-scheme: light dark;
+  --bg: #F1F4F3; --surface: #FFFFFF; --ink: #0E2A2F; --muted: #557074; --line: #D7E0DF;
+  --brand: #0E3B43; --accent: #F0533C; --accent-ink: #C23A25; --focus: #F0533C;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #0A2328; --surface: #0E3B43; --ink: #E8F1EF; --muted: #9DBDBA; --line: #1D525B;
+          --brand: #CFE5E2; --accent-ink: #FF8C78; --focus: #FF8C78; }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+       font: 18px/1.6 "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--brand); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+@media (max-width: 400px) { .wrap { padding: 0 16px; } body { font-size: 17px; } }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 0; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
+         letter-spacing: -0.01em; color: var(--brand); text-decoration: none; }
+.brand img { width: 30px; height: 30px; }
+.top-link { font: 600 13px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em;
+            text-transform: uppercase; color: var(--brand); text-decoration: none;
+            border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; background: var(--surface); }
+.top-link:hover { border-color: var(--brand); }
+
+main { padding: 24px 0 48px; }
+.eyebrow { font: 600 13px/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .14em;
+           text-transform: uppercase; color: var(--accent-ink); margin: 0 0 14px; }
+h1 { font-size: clamp(32px, 6vw, 46px); line-height: 1.08; letter-spacing: -0.02em; font-weight: 800;
+     color: var(--brand); margin: 0 0 24px; overflow-wrap: break-word; }
+h2 { font-size: 23px; line-height: 1.25; color: var(--brand); letter-spacing: -0.01em; margin: 40px 0 8px; }
+h3 { font-size: 19px; line-height: 1.3; color: var(--brand); margin: 24px 0 4px; }
+p, li { color: var(--ink); }
+ul, ol { padding-left: 24px; }
+li { margin: 6px 0; }
+.muted { color: var(--muted); }
+b, strong { font-weight: 700; }
+.btn-name { font-weight: 700; white-space: normal; }
+
+.summary { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+           border-radius: 14px; padding: 18px 22px; margin: 0 0 36px; }
+.summary p { margin: 0; }
+
+/* Numbered steps */
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 16px 0; }
+.steps > li { counter-increment: step; position: relative; padding: 0 0 0 48px; margin: 0 0 18px; }
+.steps > li::before { content: counter(step); position: absolute; left: 0; top: 0;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--brand); color: var(--bg);
+  font: 700 16px/32px "JetBrains Mono", ui-monospace, monospace; text-align: center; }
+.steps > li > :first-child { margin-top: 3px; }
+.steps p { margin: 4px 0; }
+
+/* Cards on the help index */
+.cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+@media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+.cards li { margin: 0; }
+.card { display: block; height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+        padding: 18px 20px; text-decoration: none; color: var(--ink); }
+.card:hover { border-color: var(--brand); }
+.card .t { display: block; font-weight: 800; font-size: 19px; line-height: 1.3; color: var(--brand); margin: 0 0 6px; }
+.card .d { display: block; font-size: 16px; line-height: 1.5; color: var(--muted); }
+.card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.links { list-style: none; padding: 0; margin: 12px 0; }
+.links li { margin: 0; border-top: 1px solid var(--line); }
+.links li:last-child { border-bottom: 1px solid var(--line); }
+.links a { display: block; padding: 12px 2px; font-weight: 600; }
+.links .d { display: inline-block; width: 100%; text-decoration: none; font-weight: 400; font-size: 16px; color: var(--muted); }
+
+/* Callouts */
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin: 20px 0; font-size: 17px; }
+.note p { margin: 0; }
+.note p + p { margin-top: 8px; }
+
+/* The "what we keep" table. On phones each row becomes a small card. */
+.keep { width: 100%; border-collapse: collapse; margin: 12px 0 8px; font-size: 16px; line-height: 1.5;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.keep caption { text-align: left; color: var(--muted); font-size: 15px; padding: 0 0 8px; caption-side: top; }
+.keep th, .keep td { text-align: left; vertical-align: top; padding: 12px 14px; border-top: 1px solid var(--line); }
+.keep thead th { border-top: 0; font: 600 12px/1.3 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em;
+                 text-transform: uppercase; color: var(--muted); }
+.keep tbody th { color: var(--brand); font-weight: 700; width: 24%; }
+.keep td:last-child { width: 26%; }
+@media (max-width: 640px) {
+  .keep { border: 0; background: none; border-radius: 0; }
+  .keep thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .keep, .keep tbody, .keep tr, .keep th, .keep td { display: block; width: auto; }
+  .keep caption { display: block; }
+  .keep tr { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin: 0 0 12px; padding: 4px 0; }
+  .keep tbody th { width: auto; border-top: 0; font-size: 17px; padding: 10px 14px 4px; }
+  .keep td { border-top: 0; padding: 4px 14px 10px; width: auto; }
+  .keep td:last-child { width: auto; }
+  .keep td::before { content: attr(data-label); display: block; font: 600 11px/1.4 "JetBrains Mono", ui-monospace, monospace;
+                     letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
+}
+
+/* Status words */
+.status { list-style: none; padding: 0; margin: 12px 0; }
+.status li { display: grid; grid-template-columns: 7.5em 1fr; gap: 4px 14px; padding: 10px 0; margin: 0; border-top: 1px solid var(--line); }
+.status li:last-child { border-bottom: 1px solid var(--line); }
+.status .w { font-weight: 800; color: var(--brand); }
+@media (max-width: 400px) { .status li { grid-template-columns: 1fr; } }
+
+/* The diagram on names.html */
+.diagram { margin: 24px 0 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px 10px; }
+.diagram svg { display: block; width: 100%; height: auto; max-width: 560px; margin: 0 auto; }
+.diagram figcaption { font-size: 15px; line-height: 1.5; color: var(--muted); padding: 6px 8px 2px; }
+.dg-box { fill: var(--bg); stroke: var(--brand); stroke-width: 2; }
+.dg-screen { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.dg-name { fill: var(--ink); font: 800 19px "Archivo", system-ui, sans-serif; }
+.dg-junk { fill: var(--muted); font: 600 16px "JetBrains Mono", ui-monospace, monospace; }
+.dg-label { fill: var(--brand); font: 700 14px "Archivo", system-ui, sans-serif; }
+.dg-small { fill: var(--muted); font: 500 13px "Archivo", system-ui, sans-serif; }
+.dg-arrow { stroke: var(--brand); stroke-width: 2.5; fill: none; }
+.dg-head { fill: var(--brand); }
+.dg-link { stroke: var(--accent-ink); stroke-width: 2.5; fill: none; stroke-dasharray: 6 5; }
+.dg-link-head { fill: var(--accent-ink); }
+.dg-link-text { fill: var(--accent-ink); font: 700 14.5px "Archivo", system-ui, sans-serif; }
+.dg-rack { stroke: var(--line); stroke-width: 2; }
+
+/* More help and footer */
+.more { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 8px; }
+.more h2 { margin-top: 24px; font-size: 19px; }
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; padding: 26px 0 40px; }
+footer a { color: var(--brand); }
+footer .sep { padding: 0 3px; }
