@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GatherFlights: everyone's flights, one arrivals board</title>
 <meta name="description" content="GatherFlights by RogerUp Labs. Share one invite link and watch your whole group's flights land on a live arrivals board. Pay per trip, no subscription. Private by design. Coming soon.">
+<link rel="canonical" href="https://gatherflights.com/">
+<meta property="og:site_name" content="GatherFlights">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gatherflights.com/">
+<meta property="og:title" content="GatherFlights: everyone's flights, one arrivals board">
+<meta property="og:description" content="Share one invite link and watch your whole group land on a live arrivals board. Pay per trip, and it's deleted after the trip.">
+<meta property="og:image" content="https://gatherflights.com/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="GatherFlights: Everyone's flights, one arrivals board.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="icon.svg?v=2" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -42,7 +53,20 @@
   .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
 
   /* top bar */
-  .top { display: flex; align-items: center; justify-content: space-between; padding-block: 20px; }
+  .top { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; padding-block: 20px; }
+  .top-nav { display: flex; gap: 18px; font-size: 15px; font-weight: 600; }
+  .top-nav a { color: var(--muted); text-decoration: none; border-radius: 4px; }
+  .top-nav a:hover { color: var(--brand); text-decoration: underline; }
+  .top .pill { margin-left: auto; }
+  .top-nav a:focus-visible, .brand:focus-visible, footer a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
+  @media (max-width: 520px) {
+    .top { padding-block: 16px 12px; }
+    .top-nav { order: 3; width: 100%; padding-left: 40px; font-size: 14px; }
+  }
+  @media (max-width: 380px) {
+    .top { column-gap: 10px; }
+    .top .pill { font-size: 11px; letter-spacing: .05em; padding: 6px 9px; }
+  }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px;
            letter-spacing: -0.01em; color: var(--brand); text-decoration: none; }
   .brand img { width: 30px; height: 30px; }
@@ -124,7 +148,12 @@
   @keyframes flip-out { to { opacity: 0; } }
   @keyframes flip-in { from { opacity: 0; transform: translateY(-40%); } to { opacity: 1; transform: none; } }
   .board-foot { color: var(--board-dim); font-size: 12px; padding: 12px 0 2px; border-top: 1px solid var(--board-line); }
-  @media (max-width: 560px) { .hide-sm { display: none; } .board { padding: 18px 16px 10px; } .board table { font-size: 13px; } }
+  .lands-sm { display: none; }
+  @media (max-width: 560px) { .hide-sm { display: none; } .board { padding: 18px 16px 10px; } .board table { font-size: 13px; }
+    .board td, .board th { padding-inline: 5px; }
+    .board td:first-child { white-space: normal; }
+    .lands-sm { display: block; color: var(--board-dim); font-size: 12px; margin-top: 2px; } }
+  @media (max-width: 360px) { .board { padding-inline: 12px; } .board td, .board th { padding-inline: 4px; } }
 
 
   /* status badges: colour + symbol + word, same as the app's board */
@@ -140,6 +169,8 @@
   .flips .b-landed { opacity: 0; animation: flip-in .5s ease-out forwards; animation-delay: var(--d); }
   .was { color: var(--board-dim); text-decoration: line-through; font-weight: 400; margin-right: 6px; font-size: 12px; }
   .board td.t { color: var(--board-ink); }
+  .lands-sm .was { margin-right: 4px; font-size: 11px; }
+  @media (max-width: 560px) { .status > span { letter-spacing: .08em; padding: 4px 7px 4px 5px; gap: 4px; } }
   .board .you { color: var(--accent); font-weight: 700; }
 
   /* phone alerts */
@@ -305,7 +336,8 @@
 <svg class="sky" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false"><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M-60,90 L415,216" dur="19s" begin="-2s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="19s" begin="-2s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M1260,40 L785,202" dur="23s" begin="-9s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="23s" begin="-9s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M-60,560 L415,348" dur="25s" begin="-15s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="25s" begin="-15s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M1260,470 L785,322" dur="21s" begin="-5s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="21s" begin="-5s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M200,960 L488,460" dur="27s" begin="-19s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="27s" begin="-19s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M1000,960 L712,460" dur="24s" begin="-12s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="24s" begin="-12s" repeatCount="indefinite"/></g><g opacity="0"><path class="sky-plane" d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="scale(0.8)"/><animateMotion path="M420,-60 L550,174" dur="22s" begin="-16s" repeatCount="indefinite" rotate="auto"/><animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.7;1" dur="22s" begin="-16s" repeatCount="indefinite"/></g></svg>
 <header class="wrap top">
   <a class="brand" href="./"><img src="logo-white.svg" alt="" width="30" height="30">GatherFlights</a>
-  <span class="pill">Coming soon</span>
+  <nav class="top-nav" aria-label="Site"><a href="https://app.gatherflights.com/help">Help</a><a href="privacy.html">Privacy</a></nav>
+  <span class="pill">Coming 2027</span>
 </header>
 
   <div class="wrap hero">
@@ -361,7 +393,7 @@
     <div class="wrap split">
       <div>
         <h2>Who's landed, who's in the air, who's running late.</h2>
-        <p class="sec-lede">One board for the friends' trip, the family reunion, the con weekend or the wedding weekend. Every status has its own colour, symbol and word, so the board reads at a glance, even if you can't tell red from green.</p>
+        <p class="sec-lede">One board for the friends' trip, the family reunion, the con weekend or the wedding weekend. Every status has its own color, symbol and word, so the board reads at a glance, even if you can't tell red from green.</p>
       </div>
       <div class="board" role="img" aria-label="Example arrivals board for a ski weekend in Denver: Leo arrived, Priya and Jordan landing, you in the air, Chris on time, Maya delayed">
         <div class="board-head">
@@ -369,13 +401,13 @@
           <span class="board-sub">Live</span>
         </div>
         <table>
-          <thead><tr><th>Who</th><th>Flight</th><th class="hide-sm">Lands</th><th>Status</th></tr></thead>
+          <thead><tr><th>Who</th><th>Flight<span class="sr"> and landing time</span></th><th class="hide-sm">Lands</th><th>Status</th></tr></thead>
           <tbody>
-            <tr><td>Leo</td><td>AA 1717</td><td class="hide-sm t">10:25 AM</td><td><span class="status"><span class="b-gate"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M-4.5,0.5 L-1.2,3.8 L5,-3.5"/></svg>ARRIVED</span></span></td></tr>
-            <tr><td>Priya &amp; Jordan</td><td>B6 469</td><td class="hide-sm t">11:05 AM</td><td><span class="status flips" style="--d:2.4s"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span><span class="b-landed"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(30)"/></svg>LANDED</span></span></td></tr>
-            <tr><td class="you">You</td><td>UA 1544</td><td class="hide-sm t">11:40 AM</td><td><span class="status"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span></span></td></tr>
-            <tr><td>Chris</td><td>WN 1388</td><td class="hide-sm t">2:20 PM</td><td><span class="status"><span class="b-clock"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M0,-5.5 V0 L3.5,2.5"/></svg>ON TIME</span></span></td></tr>
-            <tr><td>Maya</td><td>WN 2210</td><td class="hide-sm t"><span class="was">2:05</span>2:45 PM</td><td><span class="status"><span class="b-warn"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M0,-10.5 L11,9.5 H-11 Z"/><path d="M0,-3 V3 M0,6.2 V6.4"/></svg>DELAYED</span></span></td></tr>
+            <tr><td>Leo</td><td>AA 1717<span class="lands-sm" aria-hidden="true">10:25 AM</span></td><td class="hide-sm t">10:25 AM</td><td><span class="status"><span class="b-gate"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M-4.5,0.5 L-1.2,3.8 L5,-3.5"/></svg>ARRIVED</span></span></td></tr>
+            <tr><td>Priya&nbsp;&amp; Jordan</td><td>B6 469<span class="lands-sm" aria-hidden="true">11:05 AM</span></td><td class="hide-sm t">11:05 AM</td><td><span class="status flips" style="--d:2.4s"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span><span class="b-landed"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(30)"/></svg>LANDED</span></span></td></tr>
+            <tr><td class="you">You</td><td>UA 1544<span class="lands-sm" aria-hidden="true">11:40 AM</span></td><td class="hide-sm t">11:40 AM</td><td><span class="status"><span class="b-air"><svg class="ic" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M12,0 C12,-0.9 11,-1.4 9.5,-1.4 L2.5,-1.4 L-3.5,-10.5 L-6,-10.5 L-2.6,-1.4 L-8,-1.4 L-10.2,-5 L-12,-5 L-10.8,0 L-12,5 L-10.2,5 L-8,1.4 L-2.6,1.4 L-6,10.5 L-3.5,10.5 L2.5,1.4 L9.5,1.4 C11,1.4 12,0.9 12,0 Z" transform="rotate(-30)"/></svg>IN THE AIR</span></span></td></tr>
+            <tr><td>Chris</td><td>WN 1388<span class="lands-sm" aria-hidden="true">2:20 PM</span></td><td class="hide-sm t">2:20 PM</td><td><span class="status"><span class="b-clock"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><circle r="10"/><path d="M0,-5.5 V0 L3.5,2.5"/></svg>ON TIME</span></span></td></tr>
+            <tr><td>Maya</td><td>WN 2210<span class="lands-sm" aria-hidden="true"><span class="was">2:05</span>2:45 PM</span></td><td class="hide-sm t"><span class="was">2:05</span>2:45 PM</td><td><span class="status"><span class="b-warn"><svg class="ic line" viewBox="-13 -13 26 26" aria-hidden="true"><path d="M0,-10.5 L11,9.5 H-11 Z"/><path d="M0,-3 V3 M0,6.2 V6.4"/></svg>DELAYED</span></span></td></tr>
           </tbody>
         </table>
         <div class="board-foot">Example trip. Names and flights are made up.</div>
@@ -428,7 +460,7 @@
           <label for="rb-try" class="fake-btn">Add my new flight</label>
           <span class="rb-done" role="status">In the app you'd type your new flight number next, and the board updates for everyone. <label for="rb-try">Back</label></span>
         </div>
-        <p class="cta-note">When a flight is cancelled, the board asks its traveller for the new one, so the group never plans around a flight that isn't going.</p>
+        <p class="cta-note">When a flight is cancelled, the board asks its traveler for the new one, so the group never plans around a flight that isn't going.</p>
       </div>
       <div class="phone" role="group" aria-label="Example phone lock screen with GatherFlights alerts: Priya and Jordan landed, Maya is running 40 minutes late, Chris took off, and a reminder about tomorrow's ski day">
         <div class="phone-lock" aria-hidden="true"><div class="phone-day">Friday, November 13</div><div class="phone-time">11:05</div></div>
@@ -536,7 +568,7 @@
         <p class="sec-lede">Your trip is your business. We built GatherFlights to know as little about you as it can.</p>
       </div>
       <ul class="checks">
-        <li><span><b>Deleted after the trip.</b> Flights, names and the board go away when the trip ends.</span></li>
+        <li><span><b>Deleted after the trip.</b> Flights, names and the board are deleted automatically two days after the trip's last day. The organizer can delete it sooner.</span></li>
         <li><span><b>Names locked on your devices.</b> Names are encrypted with a key that stays in your invite link, so our server never sees who's flying.</span></li>
         <li><span><b>No guest accounts.</b> Guests join with the invite link, not a sign-up.</span></li>
         <li><span><b>No ads, no trackers.</b> This site doesn't use cookies, analytics or anything loaded from other companies.</span></li>
@@ -555,15 +587,16 @@
         <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
         <button class="btn" type="submit">Notify me</button>
       </form>
-      <p class="cta-note" style="margin-top:14px">Your address is used for this one email, then deleted. Or write to <a href="mailto:hello@gatherflights.com">hello@gatherflights.com</a>.</p>
+      <p class="cta-note" style="margin-top:14px;margin-bottom:6px">Launching in the US first, on iPhone and Android.</p>
+      <p class="cta-note">Your address is used for this one email, then deleted. Or write to <a href="mailto:hello@gatherflights.com">hello@gatherflights.com</a>.</p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>A <a href="https://rogeruplabs.com">RogerUp Labs</a> project &nbsp;·&nbsp; @GatherFlights on <a href="https://x.com/GatherFlights">X</a> and <a href="https://www.instagram.com/gatherflights/">Instagram</a></span>
-    <span><a href="https://app.gatherflights.com/problem?from=site">Something wrong?</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
+    <span>A <a href="https://rogeruplabs.com">RogerUp Labs</a> project &nbsp;·&nbsp; No tracking, no&nbsp;ads &nbsp;·&nbsp; @GatherFlights on <a href="https://x.com/GatherFlights">X</a> and <a href="https://www.instagram.com/gatherflights/">Instagram</a></span>
+    <span><a href="https://app.gatherflights.com/help">Help</a> &nbsp;·&nbsp; <a href="https://app.gatherflights.com/problem?from=site">Something wrong?</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
   </div>
 </footer>
 </body>
