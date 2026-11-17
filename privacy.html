@@ -59,8 +59,10 @@
   footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; padding: 26px 0 40px; }
   a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
 </style>
+<link rel="stylesheet" href="sky.css">
 </head>
 <body>
+<div class="sky" aria-hidden="true"><picture><source srcset="sky-dark.svg" media="(prefers-color-scheme: dark)"><img src="sky.svg" alt=""></picture></div>
 <header class="wrap top">
   <a class="brand" href="./"><img src="icon.svg" alt="" width="30" height="30">GatherFlights</a>
 </header>
