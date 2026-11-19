@@ -78,11 +78,12 @@
   .band { --brand: #FFFFFF; --muted: #A9C7C4; --line: #2A6670; --mark: #FFFFFF; --mark-bg: var(--band);
           background: var(--band);
           color: var(--brand); }
-  /* The same sky as the rest of the page (sky.css), in white on the band. */
-  .band { position: relative; overflow: hidden; isolation: isolate; --halo: var(--band); }
+  /* The same sky as the rest of the page (sky.css), in white on the band: it
+     sits fixed over the whole window like the page's sky, and the band only
+     shows its own part, so a plane carries straight on across the band's edge. */
+  .band { position: relative; overflow: hidden; isolation: isolate; clip-path: inset(0); --halo: var(--band); }
   .band > :not(.band-sky) { position: relative; }
-  .band-sky { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover;
-              object-position: top; pointer-events: none; }
+  .band-sky { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
   @media (prefers-reduced-motion: reduce) { .band-sky { display: none; } }
   /* hero */
   .hero { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center;
