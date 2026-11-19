@@ -3,17 +3,17 @@
    It's an animated picture, not a script: this site runs no scripts.
    Words that sit straight on the page get a soft patch of page color behind
    them, so a plane fades out as it reaches them and back in past them, and
-   never looks like a glitch in the text. Cards, boards and teal sections
-   are solid, so the sky simply passes behind them. */
+   never looks like a glitch in the text. Cards and boards are solid, so the
+   sky simply passes behind them; teal bands show it in white (index.html). */
 .sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 .sky img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (prefers-reduced-motion: reduce) { .sky { display: none; } }
 
 :root { --halo: var(--bg); }
-:is(main, footer, header, .band) :is(h1, h2, h3, p, ul, ol, dl, table, figure, form, .btn.ghost, .top-nav, .pill):not(:is(.card, .board, .phone, .summary, .privacy, .pass, .consent, .demo, .rebook, .keep, .seg) *) {
+:is(main, footer, header, .band) :is(h1, h2, h3, p, ul, ol, dl, table, figure, form, .btn.ghost, .top-nav, .pill):not(:is(.card, .board, .phone, .summary, .pass, .consent, .demo, .rebook, .keep, .seg) *) {
   position: relative;
 }
-:is(main, footer, header, .band) :is(h1, h2, h3, p, ul, ol, dl, table, figure, form, .btn.ghost, .top-nav, .pill):not(:is(.card, .board, .phone, .summary, .privacy, .pass, .consent, .demo, .rebook, .keep, .seg) *)::after {
+:is(main, footer, header, .band) :is(h1, h2, h3, p, ul, ol, dl, table, figure, form, .btn.ghost, .top-nav, .pill):not(:is(.card, .board, .phone, .summary, .pass, .consent, .demo, .rebook, .keep, .seg) *)::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: var(--halo); border-radius: 12px; box-shadow: 0 0 20px 12px var(--halo);
 }
