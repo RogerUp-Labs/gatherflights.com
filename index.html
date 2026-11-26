@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; form-action 'self' https://app.gatherflights.com; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; form-action 'self' https://app.gatherflights.com; base-uri 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GatherFlights: everyone's flights, one arrivals board</title>
 <meta name="description" content="GatherFlights by RogerUp Labs. Share one invite link and watch your whole group's flights land on a live arrivals board. Pay per trip, no subscription. Private by design. Coming soon.">
@@ -304,6 +304,13 @@
           display: block; margin-bottom: 14px; }
   .split { display: grid; gap: 40px; grid-template-columns: 1fr; align-items: center; }
   @media (min-width: 860px) { .split { grid-template-columns: 1fr 1.15fr; } }
+  .how { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
+  .how .steps { grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .how { grid-template-columns: 320px 1fr; gap: 40px; } }
+  .promo { margin: 0; }
+  .promo video { display: block; width: 100%; max-width: 320px; height: auto; aspect-ratio: 9 / 16; margin: 0 auto;
+                 border-radius: 14px; border: 1px solid var(--line); background: #0E3B43; }
+  .promo figcaption { text-align: center; color: var(--muted); font-size: 13px; margin-top: 10px; }
   .modes .card { padding: 28px; }
   @media (max-width: 759px) {
     body { font-size: 17px; }
@@ -544,10 +551,20 @@
         <li>Instead of checking five airline apps</li>
       </ul>
       <p class="instead-end">One board everyone can see.</p>
+      <div class="how">
+      <figure class="promo">
+        <video controls playsinline preload="none" width="320" height="569"
+               poster="media/the-arrival-poster.jpg"
+               aria-label="32-second video: a group's arrival day, from a flood of texts to one live arrivals board">
+          <source src="media/the-arrival.mp4" type="video/mp4">
+        </video>
+        <figcaption>32 seconds, with sound. The people in it are AI-made.</figcaption>
+      </figure>
       <div class="grid steps">
         <div class="card"><span class="step">01</span><h3>Make a trip</h3><p>Give it a name and a destination. That's all we need to start.</p></div>
         <div class="card"><span class="step">02</span><h3>Share the link</h3><p>Send one invite link to the group. Each person adds their own flight.</p></div>
         <div class="card"><span class="step">03</span><h3>Watch them land</h3><p>The arrivals board updates live, and you get a heads-up as people touch down.</p></div>
+      </div>
       </div>
     </div>
   </section>
